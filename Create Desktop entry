@@ -1,5 +1,5 @@
 #!/bin/bash
-
+BASEDIR=/home/edumelo/.local/share/applications
 source "$HOME/.config/user-dirs.dirs"
 
 #it's important
@@ -30,7 +30,7 @@ checkExecutable(){
 }
 
 
-ICON_FORMAT_LIST="ico png gif tif jpg jpeg bmp"
+ICON_FORMAT_LIST="ico png gif tif jpg jpeg bmp xpm"
 ICON=false
 checkIcon(){
 	if [ ! -z "`echo "$ICON_FORMAT_LIST" | grep $1`" ]; then
@@ -51,7 +51,7 @@ do
 	EXT=$(echo $BASENAME | cut -f 2 -d '.')
 	NAME_WITHOUT_EXT=$(echo $BASENAME | cut -f 1 -d '.')
 
-	DESKTOP_FILE=$XDG_DESKTOP_DIR/$BASENAME.desktop
+	DESKTOP_FILE=$BASEDIR/$BASENAME.desktop
 
 	generateDesktopEntry "bash -c './$BASENAME'"
 
